@@ -1,0 +1,42 @@
+# Other cloned prj for reference
+Impliment_on_embed_kit/Reference/
+Training/data/sachinpatel21_az-handwritten-alphabets-in-csv-format
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Misc
+*.map
+*.m
+*.png
+
+# Eclipse CDT project files
+.cproject
+.project
+
+# Include makefiles
+!Makefile
+*~

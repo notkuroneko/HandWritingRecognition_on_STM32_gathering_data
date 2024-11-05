@@ -1,0 +1,7 @@
+1730602153823	Delete resource 'TFTLCD'
+1730602866028	Delete resource 'TFTLCD/startup/startup_stm32f411xe.s'
+1730604382975	Rename resource 'TFT_2-8_inch_touch_dtnghia2206'
+1730604533773	Rename resource 'TFT_2-8_inch_touch'
+1730622267218	Delete resource 'TETRIS'
+1730685453534	Delete resource 'micropeta_ILI9341_Display'
+1730693039865	Rename resource 'TFT_2-8_inch_touch_BlackPill'

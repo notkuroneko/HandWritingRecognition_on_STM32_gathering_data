@@ -1,0 +1,7 @@
+../Core/Src/Touch.c:32:6:TP_Write_Byte	24	static
+../Core/Src/Touch.c:56:10:TP_Read_AD	24	static
+../Core/Src/Touch.c:97:10:TP_Read_XOY	48	static
+../Core/Src/Touch.c:131:9:TP_Read_XY	24	static
+../Core/Src/Touch.c:155:9:TP_Read_XY2	32	static
+../Core/Src/Touch.c:226:9:TP_Scan	16	static
+../Core/Src/Touch.c:536:9:TP_Init	32	static

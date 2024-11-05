@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="TFT_RESET_Pin"/>
+		<list key="findhistory">
+			<item value="LCD_RST_PIN"/>
+			<item value="LCD_RST_PORT"/>
+			<item value="TFT_CS_GPIO_Port"/>
+			<item value="HAL_GPIO_WritePin"/>
+			<item value="LCD_DC_PIN"/>
+			<item value="LCD_DC_PORT"/>
+			<item value="LCD_CS_PORT"/>
+			<item value="LCD_CS_PIN"/>
+			<item value="ILI9341_SPI_Send"/>
+			<item value="ILI9341_SPI_Send_Multiple"/>
+			<item value="HAL_SPI_Transmit"/>
+			<item value="04"/>
+			<item value="0x04"/>
+			<item value="Reset"/>
+			<item value="ILI9341_Send_Data"/>
+		</list>
+		<list key="replacehistory">
+			<item value="TFT_RESET_Pin"/>
+			<item value="TFT_RESET_GPIO_Port"/>
+			<item value="TFT_DC_Pin"/>
+			<item value="TFT_DC_GPIO_Port"/>
+			<item value="TFT_CS_Pin"/>
+			<item value="TFT_CS_GPIO_Port"/>
+			<item value=""/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="762"/>
+		<item key="DIALOG_Y_ORIGIN" value="235"/>
+		<item key="DIALOG_WIDTH" value="412"/>
+		<item key="DIALOG_HEIGHT" value="433"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|10.5|0|WINDOWS|1|-14|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>
