@@ -153,15 +153,33 @@ int main()
 	load_weights(conv2_filter[4].weights[2], conv2_filter_ch04_weights02);
 	load_weights(conv2_filter[4].weights[3], conv2_filter_ch04_weights03);
 	load_weights(conv2_filter[4].weights[4], conv2_filter_ch04_weights04);
+				// ch05
+	load_weights(conv2_filter[5].weights[0], conv2_filter_ch05_weights00);
+	load_weights(conv2_filter[5].weights[1], conv2_filter_ch05_weights01);
+	load_weights(conv2_filter[5].weights[2], conv2_filter_ch05_weights02);
+	load_weights(conv2_filter[5].weights[3], conv2_filter_ch05_weights03);
+	load_weights(conv2_filter[5].weights[4], conv2_filter_ch05_weights04);
+				// ch06
+	load_weights(conv2_filter[4].weights[0], conv2_filter_ch06_weights00);
+	load_weights(conv2_filter[4].weights[1], conv2_filter_ch06_weights01);
+	load_weights(conv2_filter[4].weights[2], conv2_filter_ch06_weights02);
+	load_weights(conv2_filter[4].weights[3], conv2_filter_ch06_weights03);
+	load_weights(conv2_filter[4].weights[4], conv2_filter_ch06_weights04);
 
 	#ifdef DEBUG
 	printf("\n=======================================================================\n");
 	printf("Print value of conv2_filter[].bias\n");
 	printFilterBias(conv2_filter, NUM_10CH);
-	printf("Print value of 10ch of conv2_filter[0].weights[]\n");
+	printf("Print value of 5ch of conv2_filter[0].weights[]\n");
 	printMatrix((float *)conv1_filter[0].weights[0], 5, FILTER_SIZE);
-	printf("Print value of 10ch of conv2_filter[1].weights[]\n");
+	printf("Print value of 5ch of conv2_filter[1].weights[]\n");
 	printMatrix((float *)conv1_filter[1].weights[0], 5, FILTER_SIZE);
+	printf("Print value of 5ch of conv2_filter[2].weights[]\n");
+	printMatrix((float *)conv1_filter[2].weights[0], 5, FILTER_SIZE);
+	printf("Print value of 5ch of conv2_filter[3].weights[]\n");
+	printMatrix((float *)conv1_filter[3].weights[0], 5, FILTER_SIZE);
+	printf("Print value of 5ch of conv2_filter[4].weights[]\n");
+	printMatrix((float *)conv1_filter[4].weights[0], 5, FILTER_SIZE);
 	#endif
 
 	// layer 3 stuff
@@ -404,22 +422,25 @@ void maxpooling(float input_mat[NUM_20CH][28][28], float output_mat[NUM_20CH][28
 
 /*
 */
-void printFilterBias(Filter *filter, int num_ch)
+void printMatrix(float *mat, int num_ch, int mat_size, int external_arg)
 {
 	for (int i_ch = 0; i_ch < num_ch; i_ch++)
 	{
-		printf("%f ", filter[i_ch].bias);
-	}
-	printf("\n\n");
-}
+		// External argument for printing extra info - mainly for debuging purpose
+		if (external_arg == printKernelIdx)
+		{
+			printf("Kernel %d\n", i_ch);
+		}
+		else if (external_arg == printChannelIdx)
+		{
+			printf("Channel %d\n", i_ch);
+		}
+		else if (external_arg == printMatIdx)
+		{
+			printf("Matrix %d\n", i_ch);
+		}
 
-/*
-*/
-void printMatrix(float *mat, int num_ch, int mat_size)
-{
-	for (int i_ch = 0; i_ch < num_ch; i_ch++)
-	{
-		printf("Channel %d\n", i_ch);
+		// Printing loop
 		for (int i = 0; i < mat_size; i++)
 		{
 			for (int j = 0; j < mat_size; j++)
@@ -452,6 +473,30 @@ void load_bias(Filter *filter, const float *temp_bias, int num_ch)
 	for (i_ch = 0; i_ch < num_ch; i_ch++)
 	{
 		filter[i_ch].bias = temp_bias[i_ch];
+	}
+}
+
+/*
+*/
+void printFilterBias(Filter *filter, int num_ch)
+{
+	volatile uint8_t i_ch;
+	for (i_ch = 0; i_ch < num_ch; i_ch++)
+	{
+		printf("%f ", filter[i_ch].bias);
+	}
+	printf("\n\n");
+}
+
+/*
+*/
+void printFilterWeight(float *mat, int num_ch_out, int num_ch_in, int mat_size)
+{
+	volatile uint8_t i_ch_out;
+	for (i_ch_out = 0; i_ch_out < num_ch_out; i_ch_out++)
+	{
+		printf("Kernel %d\n", i_ch_out);
+		printMatrix((float *)(mat + i_ch_out * num_ch_in * mat_size * mat_size));
 	}
 }
 

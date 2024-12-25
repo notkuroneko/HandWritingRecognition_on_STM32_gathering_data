@@ -10,11 +10,6 @@
 #include "conv1_params.h"
 #include "conv2_params.h"
 
-typedef struct {
-	float weights[NUM_20CH][FILTER_SIZE][FILTER_SIZE];
-	float bias;
-} Filter;
-
 // ----------------Function prototype----------------
 // Convolution functions
 // void read_input_data(const char *filename, float input[INPUT_SIZE][INPUT_SIZE]);
@@ -31,7 +26,8 @@ void load_weights(float weights[FILTER_SIZE][FILTER_SIZE], const float temp_weig
 // void;
 
 // Ultility functions
-void printMatrix(float *mat, int num_ch, int mat_size);
+void printMatrix(float *mat, int num_ch, int mat_size, int external_arg);
 void printFilterBias(Filter *filter, int num_ch);
+void printFilterWeight(float *mat, int num_ch_out, int num_ch_in, int mat_size);
 
 #endif // CNN_H

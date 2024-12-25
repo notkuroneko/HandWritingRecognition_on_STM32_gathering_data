@@ -13,4 +13,11 @@
 #define NUM_15CH 		15
 #define NUM_20CH 		20
 
+enum ExternalArg
+{
+	// nonExternalArg,
+	printKernelIdx,
+	printChannelInx,
+};
+
 #endif // CONSTANTS_H
