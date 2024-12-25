@@ -285,32 +285,45 @@ int main()
 			p, q
 	
 */
-void conv2d(float *in_mat, float *out_mat, Filter *filter, int in_dim, int in_ch, int out_ch)
+void conv2d(float *in_mat, float *out_mat, float *filter_weight, float *filter_bias, int in_dim, int in_ch, int out_ch)
 {
-	int out_dim = AFTER_KERNEL(in_dim);
+	int out_dim = AFTER_KERNEL(in_dim);	// calculate out_mat dimentions
+	volatile uint8_t i_out_ch;
+
 	// channels and kernels are bull$h!#
-	for (int i_out_ch = 0; i_out_ch < out_ch; i_out_ch++)	// iterate though output channels
+	for (i_out_ch = 0; i_out_ch < out_ch; i_out_ch++)	// iterate though output channels
 	{
+		volatile uint8_t m, n;	// index to iterate output channels
 		// START: iterate though out_mat to store value
-		for (int m = 0; m < out_dim; m++)	// m for row
+		for (m = 0; m < out_dim; m++)	// m for row
 		{
-			for (int n = 0; n < out_dim; n++)	// n for col
+			for (n = 0; n < out_dim; n++)	// n for col
 			{
-				float sum = 0.0;
-				for (int i_in_ch = 0; i_in_ch < in_ch; i_in_ch++)	// iterate though input channels
+				volatile float sum = 0.0;
+				volatile uint8_t i_in_ch;
+				for (i_in_ch = 0; i_in_ch < in_ch; i_in_ch++)	// iterate though input channels
 				{
 					// START: iterate though Kernel
-
-					for (int p = 0; p < FILTER_SIZE; p++)			// for accessing row of filter
+					volatile uint8_t p, q;	// index to iterate though filter
+					for (p = 0; p < FILTER_SIZE; p++)			// for accessing row of filter
 					{
-						for (int q = 0; q < FILTER_SIZE; q++) 		// for accessing col of filter
+						for (q = 0; q < FILTER_SIZE; q++) 		// for accessing col of filter
 						{
-							sum += (*(in_mat + (i_in_ch * FILTER_SIZE * FILTER_SIZE) + ((m + p) * FILTER_SIZE) + (n + q))) * filter[i_out_ch].weights[i_in_ch][p][q];
+							volatile float *in_mat_idx = in_mat 
+															+ (i_in_ch * FILTER_SIZE * FILTER_SIZE) 
+															+ ((m + p) * FILTER_SIZE) 
+															+ (n + q);
+							volatile float *filter_weight_idx = filter_weight 
+																+ ((i_out_ch * in_ch + i_in_ch) * FILTER_SIZE * FILTER_SIZE)
+																+ p * FILTER_SIZE
+																+ q;
+							// sum += in_mat[i_ch_out][m+p][n+q] * filter_weight[i_out_ch][i_in_ch][p][q]
+							sum += (*(in_mat_idx)) * (*(filter_weight_idx));
 						}
 					}
 					// END: iterate though Kernel
 				}
-				*(out_mat + (i_out_ch * out_dim * out_dim) + (m * out_dim) +n) += sum + filter[i_out_ch].bias;
+				*(out_mat + (i_out_ch * out_dim * out_dim) + (m * out_dim) +n) += sum + (*(filter_bias + i_out_ch));
 			}
 		}
 		// END: iterate though out_mat to store value
