@@ -5,6 +5,14 @@
 #define FILTER_SIZE 	3
 #define AFTER_KERNEL(N) (N - FILTER_SIZE + 1)	// P = 0; S = 1
 #define OUTPUT_SIZE 	10		// Number of output class, in this case 10 (0 to 9)
+#define AFTER_CONV1_DIM	26
+#define AFTER_CONV2_DIM	24
+#define AFTER_MAXP1_DIM	12
+#define AFTER_CONV3_DIM	10
+#define AFTER_CONV4_DIM	8
+#define AFTER_MAXP2_DIM	4
+
+#define POOLING_SIZE	2
 
 // some tinkering
 #define NUM_01CH 		1
@@ -19,6 +27,10 @@
 #define CONV2_K_NUM		NUM_10CH
 #define CONV3_K_NUM		NUM_12CH
 #define CONV4_K_NUM		NUM_15CH
+
+// Classifier node number
+#define FC01NODENUM		240
+#define FC02NODENUM		40
 
 enum ExternalArg
 {
