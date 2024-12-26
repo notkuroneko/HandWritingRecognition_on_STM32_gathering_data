@@ -3,7 +3,6 @@
 
 #define INPUT_SIZE 		28
 #define FILTER_SIZE 	3
-#define AFTER_KERNEL(N) (N - FILTER_SIZE + 1)	// P = 0; S = 1
 #define OUTPUT_SIZE 	10		// Number of output class, in this case 10 (0 to 9)
 #define AFTER_CONV1_DIM	26
 #define AFTER_CONV2_DIM	24
@@ -38,6 +37,19 @@ enum ExternalArg
 	printKernelIdx,
 	printChannelIdx,
 	printMatIdx,
+};
+
+enum DebugOption
+{
+	noD_ebug,
+	result_mat_only,
+	layer1_indept,
+	layer2_indept,
+	layer3_indept,
+	layer4_indept,
+	fc1_indept,
+	fc2_indept,
+
 };
 
 #endif // CONSTANTS_H

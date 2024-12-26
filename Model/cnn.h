@@ -20,11 +20,12 @@ void relu(float *mat, int mat_size, int num_ch);
 void softmax(float *input_mat, float *output_mat, int mat_size);
 void fullyconnected(float *in_mat, float *out_mat, float *weight, float *bias, int in_mat_size, int out_mat_size);
 void maxpooling2x2(float *in_mat, float *out_mat, uint8_t in_mat_size, uint8_t num_ch);
+int afterKernel(int n);
 
 // Ultility functions
 void printMatrix(float *mat, int num_ch, int mat_size, int external_arg);
 void printFilterBias(float *bias_mat, int num_ch);
-void printFilterWeight(float *mat, int num_ch_out, int num_ch_in, int mat_size);
+void printFilterWeight(float *mat, int num_ch_out, int num_ch_in);
 void printMat1D(float *mat, int num_ch);
 void printPredict(float *mat);
 

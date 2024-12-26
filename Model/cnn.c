@@ -22,9 +22,9 @@
 #include "lin1_params.h"
 #include "lin2_params.h"
 
-#define DEBUG 0
+// #define DEBUG 2  // Corresponds to layer1_indep
 
-// size = 28*28*1*4 = 3136 bytes
+// Label: 1
 const float input_mat_temp[INPUT_SIZE * INPUT_SIZE] = {
 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
@@ -54,9 +54,39 @@ const float input_mat_temp[INPUT_SIZE * INPUT_SIZE] = {
 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-
-
 };
+
+// // Label: 3
+// const float input_mat_temp[INPUT_SIZE * INPUT_SIZE] = {
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.2, 0.4, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.5, 0.9, 0.9, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.6, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 1.0, 1.0, 0.9, 0.5, 0.5, 0.5, 0.5, 0.7, 1.0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1, 0.0, 0.0, 0.0, 0.0, 0.1, 0.9, 1.0, 1.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 1.0, 1.0, 1.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.7, 1.0, 1.0, 1.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 0.8, 1.0, 1.0, 1.0, 1.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.5, 0.8, 0.8, 0.8, 1.0, 1.0, 1.0, 1.0, 0.9, 0.4, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.9, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.9, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.5, 0.2, 0.2, 0.2, 0.2, 0.2, 0.6, 1.0, 1.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 1.0, 1.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 1.0, 1.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 0.9, 1.0, 1.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.7, 1.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.1, 0.4, 0.9, 1.0, 1.0, 1.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.8, 1.0, 1.0, 0.6, 0.5, 0.5, 0.5, 0.5, 0.8, 1.0, 1.0, 1.0, 0.7, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.8, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.9, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.6, 1.0, 1.0, 1.0, 1.0, 1.0, 0.9, 0.8, 0.6, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 0.9, 1.0, 0.7, 0.4, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+// };
 
 int main()
 {
@@ -112,23 +142,48 @@ int main()
 	memset(softmax_result_mat, 0, softmax_result_mat_size);
 
 // Calculation
+	#ifdef DEBUG
+	printf("\n======================================================================= INPUT\n");
+	printMatrix((float *)input_mat_temp, 1, 28, 0);
+	#endif
+
 	// layer 1
+	#if DEBUG == 2
+	printf("\n======================================================================= Layer 1, filter weight\n");
+	printFilterWeight((float *)conv1_filter_weight, 5, 1);
+	printf("\n======================================================================= Layer 1, filter bias\n");
+	printFilterBias((float *)conv1_filter_bias, 5);
+	printf("\n======================================================================= Layer 1, l1_mat before conv2d\n");
+	printMatrix((float *)l1_mat, CONV1_K_NUM, AFTER_CONV1_DIM, printChannelIdx);
+	#endif
+	
 	conv2d((float *)input_mat_temp, (float *)l1_mat, (float *)conv1_filter_weight, (float *)conv1_filter_bias, INPUT_SIZE, NUM_01CH, NUM_05CH);
+	
+	#if DEBUG == 2
+	printf("\n======================================================================= Layer 1, l1_mat after conv2d\n");
+	printMatrix((float *)l1_mat, CONV1_K_NUM, AFTER_CONV1_DIM, printChannelIdx);
+	#endif // DEBUG == layer1_indept
+
 	relu((float *)l1_mat, AFTER_CONV1_DIM, NUM_05CH);
+
+	#if DEBUG == 2
+	printf("\n======================================================================= Layer 1, l1_mat after relu\n");
+	printMatrix((float *)l1_mat, CONV1_K_NUM, AFTER_CONV1_DIM, printChannelIdx);
+	#endif // DEBUG == layer1_indept
 
 	// layer 2
 	conv2d((float *)l1_mat, (float *)l2_mat, (float *)conv2_filter_weight, (float *)conv2_filter_bias, AFTER_CONV1_DIM, NUM_05CH, NUM_10CH);
-	relu((float *)l2_mat, AFTER_CONV2_DIM, NUM_10CH);
-	maxpooling2x2((float *)l2_mat, (float *)l2_pool_mat, AFTER_CONV2_DIM, NUM_10CH);
+	relu((float *)l2_mat, AFTER_CONV2_DIM, CONV2_K_NUM);
+	maxpooling2x2((float *)l2_mat, (float *)l2_pool_mat, AFTER_CONV2_DIM, CONV2_K_NUM);
 
 	// layer 3
-	conv2d((float *)l2_pool_mat, (float *)l3_mat, (float *)conv3_filter_weight, (float *)conv3_filter_bias, AFTER_MAXP1_DIM, NUM_10CH, NUM_12CH);
-	relu((float *)l3_mat, AFTER_CONV3_DIM, NUM_12CH);	
+	conv2d((float *)l2_pool_mat, (float *)l3_mat, (float *)conv3_filter_weight, (float *)conv3_filter_bias, AFTER_MAXP1_DIM, NUM_10CH, CONV3_K_NUM);
+	relu((float *)l3_mat, AFTER_CONV3_DIM, CONV3_K_NUM);	
 
 	// layer 4
 	conv2d((float *)l3_mat, (float *)l4_mat, (float *)conv4_filter_weight, (float *)conv4_filter_bias, AFTER_CONV3_DIM, NUM_12CH, NUM_15CH);
-	relu((float *)l4_mat, AFTER_CONV3_DIM, NUM_15CH);
-	maxpooling2x2((float *)l4_mat, (float *)l4_pool_mat, AFTER_CONV4_DIM, NUM_10CH);
+	relu((float *)l4_mat, AFTER_CONV4_DIM, NUM_15CH);
+	maxpooling2x2((float *)l4_mat, (float *)l4_pool_mat, AFTER_CONV4_DIM, CONV4_K_NUM);
 
 	fullyconnected((float *)l4_pool_mat, (float *)fc1_mat, (float *)lin1_weight, (float *)lin1_bias, FC01NODENUM, FC02NODENUM);	
 
@@ -136,7 +191,26 @@ int main()
 
 	softmax((float *)fc2_mat, (float *)softmax_result_mat, OUTPUT_SIZE);
 
-	printf("\n=======================================================================\n");
+	#if (DEBUG == 1)
+	printf("\n======================================================================= CONV1 relu result\n");
+	printMatrix((float *)l1_mat, CONV1_K_NUM, AFTER_CONV1_DIM, printChannelIdx);
+	printf("\n======================================================================= CONV2 relu result\n");
+	printMatrix((float *)l2_mat, CONV2_K_NUM, AFTER_CONV2_DIM, printChannelIdx);
+	printf("\n======================================================================= CONV2 maxpooling result\n");
+	printMatrix((float *)l2_pool_mat, CONV2_K_NUM, AFTER_MAXP1_DIM, printChannelIdx);
+	printf("\n======================================================================= CONV3 relu result\n");
+	printMatrix((float *)l3_mat, CONV3_K_NUM, AFTER_CONV3_DIM, printChannelIdx);
+	printf("\n======================================================================= CONV4 relu result\n");
+	printMatrix((float *)l4_mat, CONV4_K_NUM, AFTER_CONV4_DIM, printChannelIdx);
+	printf("\n======================================================================= CONV4 maxpooling result\n");
+	printMatrix((float *)l4_pool_mat, CONV4_K_NUM, AFTER_MAXP2_DIM, printChannelIdx);
+	printf("\n======================================================================= FC1 result\n");
+	printMat1D((float *)fc1_mat, FC01NODENUM);
+	printf("\n======================================================================= FC2 relu result\n");
+	printMat1D((float *)fc2_mat, FC02NODENUM);
+	#endif
+
+	printf("\n======================================================================= softmax result\n");
 	printMat1D((float *)softmax_result_mat, NUM_10CH);
 	printf("=======================================================================\n");
 	printPredict((float *)softmax_result_mat);
@@ -144,57 +218,6 @@ int main()
 	return 0;
 }
 
-// Function to read input data from a file
-// void read_input_data(const char *filename, float input[INPUT_SIZE][INPUT_SIZE]) {
-// 	FILE *file = fopen(filename, "r");
-// 	if (!file) {
-// 		perror("Failed to open file");
-// 		exit(EXIT_FAILURE);
-// 	}
-// 	for (int i = 0; i < INPUT_SIZE; i++) {
-// 		for (int j = 0; j < INPUT_SIZE; j++) {
-// 			fscanf(file, "%f", &input[i][j]);
-// 		}
-// 	}
-// 	fclose(file);
-// }
-
-
-/*	Function: apply_filter - applying kernel in conv layer
-	Input:
-		input: input matrix
-		filter: kernel
-		x, y: coordinates of destinaiton matrix
-	Output:
-		sum = total-sigma(input * weight) + bias
-*/
-// float apply_filter(float *input, Filter *filter, int x, int y) 
-// {
-// 	float sum = 0.0;
-// 		for (int i = 0; i < FILTER_SIZE; i++)			// for accessing row of filter_mat
-// 	{
-// 		for (int j = 0; j < FILTER_SIZE; j++) 		// for accessing col of filter_mat
-// 		{
-// 			sum += input[x + i][y + j] * filter->weights[i][j];
-// 		}
-// 	}
-// 	return sum + filter->bias; // Add bias
-// }
-
-// /*	Function: conv2d - convolution 2d of an single channels
-// 	Input:
-// 	Output:
-// */
-// void conv2d_1ch(float *input_mat, float *output_mat, Filter *filter, int input_mat_size) 
-// {
-// 	for (int i = 0; i < AFTER_KERNEL(input_mat_size); i++)
-// 	{
-// 		for (int j = 0; j < AFTER_KERNEL(input_mat_size); j++)
-// 		{
-// 			output[i][j] = apply_filter(input_mat, filter, i, j);
-// 		}
-// 	}
-// }
 
 /*
 	i, j
@@ -204,9 +227,15 @@ int main()
 */
 void conv2d(float *in_mat, float *out_mat, float *filter_weight, float *filter_bias, int in_dim, int in_ch, int out_ch)
 {
-	int out_dim = AFTER_KERNEL(in_dim);	// calculate out_mat dimentions
+	int out_dim = afterKernel(in_dim);	// calculate out_mat dimentions
 
-	// channels and kernels are bull$h!#
+	// Initialize output matrix to zero
+    for (int i = 0; i < out_ch * out_dim * out_dim; i++)
+    {
+        out_mat[i] = 0.0f;
+    }
+
+	// Perform convolution (damme bull$h!#)
 	for (int i_out_ch = 0; i_out_ch < out_ch; i_out_ch++)	// iterate though output channels
 	{
 		// START: iterate though out_mat to store value
@@ -214,7 +243,7 @@ void conv2d(float *in_mat, float *out_mat, float *filter_weight, float *filter_b
 		{
 			for (int n = 0; n < out_dim; n++)	// n for col
 			{
-				float sum = 0.0;
+				float sum = 0.0f;
 				for (int i_in_ch = 0; i_in_ch < in_ch; i_in_ch++)	// iterate though input channels
 				{
 					// START: iterate though Kernel
@@ -222,21 +251,18 @@ void conv2d(float *in_mat, float *out_mat, float *filter_weight, float *filter_b
 					{
 						for (int q = 0; q < FILTER_SIZE; q++) 		// for accessing col of filter
 						{
-							float *in_mat_idx = in_mat 
-															+ (i_in_ch * FILTER_SIZE * FILTER_SIZE) 
-															+ ((m + p) * FILTER_SIZE) 
-															+ (n + q);
-							float *filter_weight_idx = filter_weight 
-																+ ((i_out_ch * in_ch + i_in_ch) * FILTER_SIZE * FILTER_SIZE)
-																+ p * FILTER_SIZE
-																+ q;
+							int in_idx = (i_in_ch * in_dim * in_dim) + ((m + p) * in_dim) + (n + q);
+							int filter_idx = (i_out_ch * in_ch * FILTER_SIZE * FILTER_SIZE) + 
+                                             (i_in_ch * FILTER_SIZE * FILTER_SIZE) + 
+                                             (p * FILTER_SIZE) + q;
 							// sum += in_mat[i_ch_out][m+p][n+q] * filter_weight[i_out_ch][i_in_ch][p][q]
-							sum += (*(in_mat_idx)) * (*(filter_weight_idx));
+							sum += in_mat[in_idx] * filter_weight[filter_idx];
 						}
 					}
 					// END: iterate though Kernel
 				}
-				*(out_mat + (i_out_ch * out_dim * out_dim) + (m * out_dim) +n) += sum + (*(filter_bias + i_out_ch));
+				int out_idx = (i_out_ch * out_dim * out_dim) + (m * out_dim) + n;
+				out_mat[out_idx] = sum + filter_bias[i_out_ch];
 			}
 		}
 		// END: iterate though out_mat to store value
@@ -371,7 +397,7 @@ void printMatrix(float *mat, int num_ch, int mat_size, int external_arg)
 		{
 			for (int j = 0; j < mat_size; j++)
 			{
-				printf("%f  ", *(mat + (i_ch * mat_size * mat_size) + (i * mat_size) + j));
+				printf("%.3f  ", *(mat + (i_ch * mat_size * mat_size) + (i * mat_size) + j));
 			}
 			printf("\n");
 		}
@@ -397,8 +423,9 @@ void printMat1D(float *mat, int num_ch)
 
 /*
 */
-void printFilterWeight(float *mat, int num_ch_out, int num_ch_in, int mat_size)
+void printFilterWeight(float *mat, int num_ch_out, int num_ch_in)
 {
+	int mat_size = FILTER_SIZE;
 	for (int i_ch_out = 0; i_ch_out < num_ch_out; i_ch_out++)
 	{
 		printf("Kernel %d\n", i_ch_out);
@@ -419,6 +446,12 @@ void printPredict(float *mat)
 		}
 	}
 	printf("Predict %d with chance of %f\n", max_idx, max_predict);
+}
+
+// #define AFTER_KERNEL(N) (N - FILTER_SIZE + 1)	// P = 0; S = 1
+int afterKernel(int n)
+{
+	return (n - FILTER_SIZE + 1);
 }
 
 // void matmul_a_b()
