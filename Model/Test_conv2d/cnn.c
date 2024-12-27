@@ -17,43 +17,21 @@
 #include "constants.h"
 #include "conv1_params.h"
 #include "conv2_params.h"
-#include "conv3_params.h"
-#include "conv4_params.h"
-#include "lin1_params.h"
-#include "lin2_params.h"
+// #include "conv3_params.h"
+// #include "conv4_params.h"
+// #include "lin1_params.h"
+// #include "lin2_params.h"
 
 #define DEBUG 2  // Corresponds to layer1_indep
 
 // Label: 1
 const float input_mat_temp[INPUT_SIZE * INPUT_SIZE] = {
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 1.0, 0.9, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 1.0, 1.0, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.9, 1.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 1.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 1.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 1.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 1.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 1.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 1.0, 1.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 1.0, 1.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8, 1.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 1.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9, 1.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 0.8, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+	1.0, 0.0, 0.5, 0.0, 0.2, 0.1, 
+	1.0, 0.4, 0.5, 0.3, 0.2, 0.0,
+	1.0, 0.0, 0.5, 0.0, 0.2, 0.1,
+	1.0, 0.0, 0.5, 0.3, 0.2, 0.0,
+	1.0, 0.4, 0.5, 0.0, 0.2, 0.1,
+	1.0, 0.0, 0.5, 0.3, 0.2, 0.0,
 };
 
 // // Label: 3
@@ -94,57 +72,57 @@ int main()
 	
 	// layer 1 stuff - l1~~~
 	const int l1_ch = NUM_05CH;
-	const int l1_dim = 26;
+	const int l1_dim = 4;
 	float l1_mat[l1_ch * l1_dim * l1_dim];	// mat to store calculated value
 	int l1_mat_bytesize = sizeof(float)*l1_ch*l1_dim*l1_dim;
 	memset(l1_mat, 0, l1_mat_bytesize);
 
 	// layer 2 stuff - l1~~~
 	const int l2_ch = NUM_10CH;
-	const int l2_dim = 24;
+	const int l2_dim = 2;
 	float l2_mat[l2_ch * l2_dim * l2_dim];	// mat to store conv2 calculated value
 	int l2_mat_bytesize = sizeof(float)*l2_ch*l2_dim*l2_dim;
 	memset(l2_mat, 0, l2_mat_bytesize);
-	const int l2_pool_mat_dim = 12; 		// l2_pool_mat_dim = l2_dim / 2
-	float l2_pool_mat[l2_ch * l2_pool_mat_dim * l2_pool_mat_dim];			// mat to store maxpooling calculated value
-	int l2_pool_mat_bs = sizeof(float)*l2_ch*l2_pool_mat_dim*l2_pool_mat_dim;
-	memset(l2_pool_mat, 0, l2_pool_mat_bs);
+	// const int l2_pool_mat_dim = 12; 		// l2_pool_mat_dim = l2_dim / 2
+	// float l2_pool_mat[l2_ch * l2_pool_mat_dim * l2_pool_mat_dim];			// mat to store maxpooling calculated value
+	// int l2_pool_mat_bs = sizeof(float)*l2_ch*l2_pool_mat_dim*l2_pool_mat_dim;
+	// memset(l2_pool_mat, 0, l2_pool_mat_bs);
 
-	// layer 3 stuff
-	const int l3_ch = NUM_12CH;
-	const int l3_dim = 10;
-	float l3_mat[l3_ch * l3_dim * l3_dim];	// mat to store calculated value
-	int l3_mat_bs = sizeof(float) * l3_ch * l3_dim * l3_dim;
-	memset(l3_mat, 0, l3_mat_bs);
+	// // layer 3 stuff
+	// const int l3_ch = NUM_12CH;
+	// const int l3_dim = 10;
+	// float l3_mat[l3_ch * l3_dim * l3_dim];	// mat to store calculated value
+	// int l3_mat_bs = sizeof(float) * l3_ch * l3_dim * l3_dim;
+	// memset(l3_mat, 0, l3_mat_bs);
 
-	// layer 4 stuff
-	const int l4_ch = NUM_15CH;
-	const int l4_dim = 8;
-	float l4_mat[l4_ch * l4_dim * l4_dim];	// mat to store conv2 calculated value
-	int l4_mat_bytesize = sizeof(float) * l4_ch * l4_dim * l4_dim;
-	memset(l4_mat, 0, l4_mat_bytesize);
-	const int l4_pool_mat_dim = 4; 		// l2_pool_mat_dim = l2_dim / 2
-	float l4_pool_mat[l4_ch * l4_pool_mat_dim * l4_pool_mat_dim];			// mat to store maxpooling calculated value
-	int l4_pool_mat_bs = sizeof(float) * l4_ch * l4_pool_mat_dim * l4_pool_mat_dim;
-	memset(l4_pool_mat, 0, l4_pool_mat_bs);
+	// // layer 4 stuff
+	// const int l4_ch = NUM_15CH;
+	// const int l4_dim = 8;
+	// float l4_mat[l4_ch * l4_dim * l4_dim];	// mat to store conv2 calculated value
+	// int l4_mat_bytesize = sizeof(float) * l4_ch * l4_dim * l4_dim;
+	// memset(l4_mat, 0, l4_mat_bytesize);
+	// const int l4_pool_mat_dim = 4; 		// l2_pool_mat_dim = l2_dim / 2
+	// float l4_pool_mat[l4_ch * l4_pool_mat_dim * l4_pool_mat_dim];			// mat to store maxpooling calculated value
+	// int l4_pool_mat_bs = sizeof(float) * l4_ch * l4_pool_mat_dim * l4_pool_mat_dim;
+	// memset(l4_pool_mat, 0, l4_pool_mat_bs);
 
-	// fullyconnected
-	float fc1_mat[FC02NODENUM];	// mat to store fullyconnected 1
-	int fc1_mat_bytesize = sizeof(float) * FC02NODENUM;
-	memset(fc1_mat, 0, fc1_mat_bytesize);
+	// // fullyconnected
+	// float fc1_mat[FC02NODENUM];	// mat to store fullyconnected 1
+	// int fc1_mat_bytesize = sizeof(float) * FC02NODENUM;
+	// memset(fc1_mat, 0, fc1_mat_bytesize);
 
-	float fc2_mat[OUTPUT_SIZE];	// mat to sotre fullyconnected 2
-	int fc2_mat_bytesize = sizeof(float) * OUTPUT_SIZE;
-	memset(fc2_mat, 0, fc2_mat_bytesize);
+	// float fc2_mat[OUTPUT_SIZE];	// mat to sotre fullyconnected 2
+	// int fc2_mat_bytesize = sizeof(float) * OUTPUT_SIZE;
+	// memset(fc2_mat, 0, fc2_mat_bytesize);
 
-	float softmax_result_mat[OUTPUT_SIZE];
-	int softmax_result_mat_size = sizeof(float) * OUTPUT_SIZE;
-	memset(softmax_result_mat, 0, softmax_result_mat_size);
+	// float softmax_result_mat[OUTPUT_SIZE];
+	// int softmax_result_mat_size = sizeof(float) * OUTPUT_SIZE;
+	// memset(softmax_result_mat, 0, softmax_result_mat_size);
 
 // Calculation
 	#ifdef DEBUG
 	printf("\n======================================================================= INPUT\n");
-	printMatrix((float *)input_mat_temp, 1, 28, 0);
+	printMatrix((float *)input_mat_temp, 1, INPUT_SIZE, 0);
 	#endif
 
 	// layer 1
@@ -171,60 +149,66 @@ int main()
 
 	// layer 2
 	conv2d((float *)l1_mat, (float *)l2_mat, (float *)conv2_filter_weight, (float *)conv2_filter_bias, AFTER_CONV1_DIM, NUM_05CH, NUM_10CH);
+	#if DEBUG == 2
+	printf("\n======================================================================= Layer 2, l2_mat after conv2d\n");
+	printMatrix((float *)l2_mat, CONV1_K_NUM, AFTER_CONV2_DIM, printChannelIdx);
+	#endif // DEBUG == layer1_indept
+
 	relu((float *)l2_mat, AFTER_CONV2_DIM, CONV2_K_NUM);
-	maxpooling2x2((float *)l2_mat, (float *)l2_pool_mat, AFTER_CONV2_DIM, CONV2_K_NUM);
-
-	// layer 3
-	conv2d((float *)l2_pool_mat, (float *)l3_mat, (float *)conv3_filter_weight, (float *)conv3_filter_bias, AFTER_MAXP1_DIM, NUM_10CH, CONV3_K_NUM);
-	relu((float *)l3_mat, AFTER_CONV3_DIM, CONV3_K_NUM);	
-
-	// layer 4
-	conv2d((float *)l3_mat, (float *)l4_mat, (float *)conv4_filter_weight, (float *)conv4_filter_bias, AFTER_CONV3_DIM, NUM_12CH, NUM_15CH);
-	relu((float *)l4_mat, AFTER_CONV4_DIM, NUM_15CH);
-	maxpooling2x2((float *)l4_mat, (float *)l4_pool_mat, AFTER_CONV4_DIM, CONV4_K_NUM);
-
-	fullyconnected((float *)l4_pool_mat, (float *)fc1_mat, (float *)lin1_weight, (float *)lin1_bias, FC01NODENUM, FC02NODENUM);	
-
-	fullyconnected((float *)fc1_mat, (float *)fc2_mat, (float *)lin2_weight, (float *)lin2_bias, FC02NODENUM, OUTPUT_SIZE);	
-
-	softmax((float *)fc2_mat, (float *)softmax_result_mat, OUTPUT_SIZE);
-
-	#if (DEBUG == 1)
-	printf("\n======================================================================= CONV1 relu result\n");
-	printMatrix((float *)l1_mat, CONV1_K_NUM, AFTER_CONV1_DIM, printChannelIdx);
-	printf("\n======================================================================= CONV2 relu result\n");
+	#if DEBUG == 2
+	printf("\n======================================================================= Layer 1, l1_mat after relu\n");
 	printMatrix((float *)l2_mat, CONV2_K_NUM, AFTER_CONV2_DIM, printChannelIdx);
-	printf("\n======================================================================= CONV2 maxpooling result\n");
-	printMatrix((float *)l2_pool_mat, CONV2_K_NUM, AFTER_MAXP1_DIM, printChannelIdx);
-	printf("\n======================================================================= CONV3 relu result\n");
-	printMatrix((float *)l3_mat, CONV3_K_NUM, AFTER_CONV3_DIM, printChannelIdx);
-	printf("\n======================================================================= CONV4 relu result\n");
-	printMatrix((float *)l4_mat, CONV4_K_NUM, AFTER_CONV4_DIM, printChannelIdx);
-	printf("\n======================================================================= CONV4 maxpooling result\n");
-	printMatrix((float *)l4_pool_mat, CONV4_K_NUM, AFTER_MAXP2_DIM, printChannelIdx);
-	printf("\n======================================================================= FC1 result\n");
-	printMat1D((float *)fc1_mat, FC01NODENUM);
-	printf("\n======================================================================= FC2 relu result\n");
-	printMat1D((float *)fc2_mat, FC02NODENUM);
-	#endif
+	#endif // DEBUG == layer1_indept
+	// maxpooling2x2((float *)l2_mat, (float *)l2_pool_mat, AFTER_CONV2_DIM, CONV2_K_NUM);
 
-	printf("\n======================================================================= softmax result\n");
-	printMat1D((float *)softmax_result_mat, NUM_10CH);
-	printf("=======================================================================\n");
-	printPredict((float *)softmax_result_mat);
+	// // layer 3
+	// conv2d((float *)l2_pool_mat, (float *)l3_mat, (float *)conv3_filter_weight, (float *)conv3_filter_bias, AFTER_MAXP1_DIM, NUM_10CH, CONV3_K_NUM);
+	// relu((float *)l3_mat, AFTER_CONV3_DIM, CONV3_K_NUM);	
 
-	return 0;
+	// // layer 4
+	// conv2d((float *)l3_mat, (float *)l4_mat, (float *)conv4_filter_weight, (float *)conv4_filter_bias, AFTER_CONV3_DIM, NUM_12CH, NUM_15CH);
+	// relu((float *)l4_mat, AFTER_CONV4_DIM, NUM_15CH);
+	// maxpooling2x2((float *)l4_mat, (float *)l4_pool_mat, AFTER_CONV4_DIM, CONV4_K_NUM);
+
+	// fullyconnected((float *)l4_pool_mat, (float *)fc1_mat, (float *)lin1_weight, (float *)lin1_bias, FC01NODENUM, FC02NODENUM);	
+
+	// fullyconnected((float *)fc1_mat, (float *)fc2_mat, (float *)lin2_weight, (float *)lin2_bias, FC02NODENUM, OUTPUT_SIZE);	
+
+	// softmax((float *)fc2_mat, (float *)softmax_result_mat, OUTPUT_SIZE);
+
+	// #if (DEBUG == 1)
+	// printf("\n======================================================================= CONV1 relu result\n");
+	// printMatrix((float *)l1_mat, CONV1_K_NUM, AFTER_CONV1_DIM, printChannelIdx);
+	// printf("\n======================================================================= CONV2 relu result\n");
+	// printMatrix((float *)l2_mat, CONV2_K_NUM, AFTER_CONV2_DIM, printChannelIdx);
+	// printf("\n======================================================================= CONV2 maxpooling result\n");
+	// printMatrix((float *)l2_pool_mat, CONV2_K_NUM, AFTER_MAXP1_DIM, printChannelIdx);
+	// printf("\n======================================================================= CONV3 relu result\n");
+	// printMatrix((float *)l3_mat, CONV3_K_NUM, AFTER_CONV3_DIM, printChannelIdx);
+	// printf("\n======================================================================= CONV4 relu result\n");
+	// printMatrix((float *)l4_mat, CONV4_K_NUM, AFTER_CONV4_DIM, printChannelIdx);
+	// printf("\n======================================================================= CONV4 maxpooling result\n");
+	// printMatrix((float *)l4_pool_mat, CONV4_K_NUM, AFTER_MAXP2_DIM, printChannelIdx);
+	// printf("\n======================================================================= FC1 result\n");
+	// printMat1D((float *)fc1_mat, FC01NODENUM);
+	// printf("\n======================================================================= FC2 relu result\n");
+	// printMat1D((float *)fc2_mat, FC02NODENUM);
+	// #endif
+
+	// printf("\n======================================================================= softmax result\n");
+	// printMat1D((float *)softmax_result_mat, NUM_10CH);
+	// printf("=======================================================================\n");
+	// printPredict((float *)softmax_result_mat);
+
+	// return 0;
 }
 
 
 /*
-	Function: conv2d
-	Input:
-		in_mat: 		(float *) input matrix/array
-		out_mat: 		(float *) output matrix/array
-		filter_weight:	(float *) filter weight, in array form of 1 x (<input ch> * <output ch> * <filter size> * <filtersize>)
-		filter_bias: 	(float *) filter weight, in array form of 1 x <number of kernel>
-	Output: result matrix store in out_mat	
+	i, j
+		m, n
+			p, q
+	
 */
 void conv2d(float *in_mat, float *out_mat, float *filter_weight, float *filter_bias, int in_dim, int in_ch, int out_ch)
 {
@@ -270,11 +254,7 @@ void conv2d(float *in_mat, float *out_mat, float *filter_weight, float *filter_b
 	}
 }
 
-
-/*	
-	Function: relu
-	Input:
-	Output:
+/*	Function: relu
 */
 void relu(float *mat, int mat_size, int num_ch) 
 {
@@ -295,8 +275,7 @@ void relu(float *mat, int mat_size, int num_ch)
 }
 
 
-/*	
-	Function: softmax - 
+/*	Function: softmax - 
 	Input:
 	Output:
 */
@@ -315,9 +294,7 @@ void softmax(float *input_mat, float *out_mat, int mat_size)
 	}
 }
 
-
-/*	
-	Function: fullyconnected
+/*	Function: fullyconnected
 	Input:
 	Output:
 */
@@ -337,11 +314,7 @@ void fullyconnected(float *in_mat, float *out_mat, float *weight, float *bias, i
 	}
 }
 
-
 /*
-	Function:
-	Input:
-	Output:
 */
 void maxpooling2x2(float *in_mat, float *out_mat, uint8_t in_mat_size, uint8_t num_ch)
 {
@@ -376,7 +349,7 @@ void maxpooling2x2(float *in_mat, float *out_mat, uint8_t in_mat_size, uint8_t n
 				}
 				// Assign the maximum value to the output matrix
 				// output_mat[i_ch][i][j] = max_value;
-				int output_idx = i_ch * out_mat_size * out_mat_size + i * out_mat_size + j;
+				int output_idx = i * out_mat_size + j;
 				out_mat[output_idx] = max_value;
 			}
 		}
