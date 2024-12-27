@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;TFT_2-8_inch_touch_dtnghia2206/Core/Inc/transistor.h&apos; to &apos;testimg_transistor.h&apos;" description="Rename resource &apos;transistor.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Inc/transistor.h" name="testimg_transistor.h" stamp="1730557495356" updateReferences="true"/>
-</session>
