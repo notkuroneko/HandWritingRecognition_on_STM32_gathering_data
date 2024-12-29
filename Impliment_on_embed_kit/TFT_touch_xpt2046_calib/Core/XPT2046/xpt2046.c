@@ -1,6 +1,21 @@
 #include "xpt2046.h"
 
 /**
+ * Defined the extern
+ */
+SPI_HandleTypeDef* spiPort;
+TouchScreen_CoordinatesRaw ts_CoordinatesRaw;
+TouchScreen_Coordinates ts_Coordinates;
+TouchScreen_OrientationTypeDef ts_Orientation;
+TouchScreen_Size ts_Size;
+TouchScreen_ControlByte ts_ControlByte;
+GPIO_TypeDef* ts_Cs_Port;
+GPIO_TypeDef* ts_Penirq_Port;
+uint16_t ts_Cs_Pin;
+uint16_t ts_Penirq_Pin;
+uint8_t command;
+
+/**
  * Init the moduel
  */
 void xpt2046_init()
@@ -10,7 +25,7 @@ void xpt2046_init()
 	ts_ControlByte.reference = XPT2046_DFR_MODE;
 	ts_ControlByte.channel = XPT2046_DFR_X; //by default
 	ts_ControlByte.startBit = XPT2046_START;
-	ts_Orientation = XPT2046_ORIENTATION_LANDSCAPE;
+	ts_Orientation = XPT2046_ORIENTATION_PORTRAIT_MIRROR;
 	ts_Size.width = XPT2046_WIDTH;
 	ts_Size.height = XPT2046_HEIGHT;
 	ts_Cs_Pin = XPT2046_CS_Pin;
