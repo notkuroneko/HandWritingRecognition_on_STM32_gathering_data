@@ -25,7 +25,7 @@ void xpt2046_init()
 	ts_ControlByte.reference = XPT2046_DFR_MODE;
 	ts_ControlByte.channel = XPT2046_DFR_X; //by default
 	ts_ControlByte.startBit = XPT2046_START;
-	ts_Orientation = XPT2046_ORIENTATION_LANDSCAPE;
+	ts_Orientation = XPT2046_ORIENTATION_PORTRAIT_MIRROR;
 	ts_Size.width = XPT2046_WIDTH;
 	ts_Size.height = XPT2046_HEIGHT;
 	ts_Cs_Pin = XPT2046_CS_Pin;

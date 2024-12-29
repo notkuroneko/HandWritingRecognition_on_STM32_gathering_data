@@ -2,7 +2,7 @@
 /**
   ******************************************************************************
   * @file           : main.c
-  * @brief          : Main program body
+  * @brief          : Main program body of TFT_touch_xpt2046 to calib screen
   ******************************************************************************
   * @attention
   *
@@ -21,8 +21,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "st7789.h";
+#include "st7789.h"
 #include "xpt2046.h"
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,7 +47,8 @@ SPI_HandleTypeDef hspi2;
 DMA_HandleTypeDef hdma_spi1_tx;
 
 /* USER CODE BEGIN PV */
-
+uint16_t coordinate_x = 0;
+uint16_t coordinate_y = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,14 +99,97 @@ int main(void)
   MX_SPI1_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
+  ST7789_Init();
 
+  xpt2046_spi(&hspi2);
+  xpt2046_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+//  ST7789_Test();
+  char coordinate_string[20];
+  uint8_t change_flag = 0;
+
+  // Turn screen Blackj
+//  ST7789_InvertColors(ST7789_INVOFF);
+  ST7789_Fill_Color(WHITE);
+  HAL_Delay(500);
+  ST7789_WriteString(10, 20, "Touch Test", Font_11x18, RED, WHITE);
+  HAL_Delay(500);
+  ST7789_DrawPixel_4px( 10,  10, CYAN);
+  ST7789_DrawPixel_4px(230,  10, CYAN);
+  ST7789_DrawPixel_4px( 10, 310, CYAN);
+  ST7789_DrawPixel_4px(230, 310, CYAN);
+
+  // Draw resset button
+  ST7789_DrawFilledRectangle(158, 18, 70, 22, BLACK);
+  ST7789_WriteString(160, 20, "RESET", Font_11x18, CYAN, BLACK);// 160~226 - 20~38
+
+  // Draw drawing border
+  ST7789_DrawRectangle(8, 88, 232, 312, BLACK);
+
   while (1)
   {
-	ST7789_ShortTest();
+	uint16_t pre_coordinate_x = coordinate_x;
+	uint16_t pre_coordinate_y = coordinate_y;
+	xpt2046_read_position(&coordinate_x, &coordinate_y);
+	if (coordinate_x == 0 && coordinate_y == 0)
+	{
+		// do smt
+		if (change_flag != 0)
+		{
+			ST7789_DrawFilledRectangle(54, 40, 66, 18, WHITE);
+			sprintf(coordinate_string,"x = 0");
+			ST7789_WriteString(10, 40, coordinate_string, Font_11x18, RED, WHITE);
+			HAL_Delay(50);
+			ST7789_DrawFilledRectangle(54, 60, 66, 18, WHITE);
+			sprintf(coordinate_string,"y = 0");
+			ST7789_WriteString(10, 60, coordinate_string, Font_11x18, RED, WHITE);
+			HAL_Delay(50);
+			change_flag = 0;
+		}
+	}
+	else
+	{
+		// update screen
+		sprintf(coordinate_string,"x = %d", coordinate_x);
+		ST7789_WriteString(10, 40, coordinate_string, Font_11x18, RED, WHITE);
+//		HAL_Delay(100);
+		sprintf(coordinate_string,"y = %d", coordinate_y );
+		ST7789_WriteString(10, 60, coordinate_string, Font_11x18, RED, WHITE);
+//		HAL_Delay(100);
+		change_flag = 1;
+	}
+
+//	// Draw function
+	if (
+			// bounding of draw box
+			(coordinate_x >  25 && coordinate_x < 221) &&
+			(coordinate_y > 108 && coordinate_y < 307) &&
+			// prevent jumping in value
+			(coordinate_x < pre_coordinate_x + 10) && (coordinate_x > pre_coordinate_x - 10) &&
+			(coordinate_y < pre_coordinate_y + 10) && (coordinate_y > pre_coordinate_y - 10)
+		)
+	{
+//		ST7789_DrawPixel_4px(coordinate_x - 3, coordinate_y - 3, RED);
+//		ST7789_DrawPixel_4px(coordinate_x - 3, coordinate_y, RED);
+//		ST7789_DrawPixel_4px(coordinate_x, coordinate_y - 3, RED);
+//		ST7789_DrawPixel_4px(coordinate_x, coordinate_y, RED);
+		ST7789_DrawFilledRectangle(coordinate_x - 4, coordinate_y - 4, 8, 8, RED);
+//		ST7789_DrawFilledCircle(coordinate_x - 4, coordinate_y - 4, 6, RED);
+//		HAL_Delay(10);
+	}
+
+	// Reset button
+	if (
+			(coordinate_x > 164 && coordinate_x < 225) &&
+			(coordinate_y >  42 && coordinate_y <  59)
+		)
+	{
+		ST7789_DrawFilledRectangle(10, 90, 220, 220, WHITE);
+		HAL_Delay(100);
+	}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -214,11 +299,11 @@ static void MX_SPI2_Init(void)
   hspi2.Instance = SPI2;
   hspi2.Init.Mode = SPI_MODE_MASTER;
   hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi2.Init.DataSize = SPI_DATASIZE_16BIT;
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -275,7 +360,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pin = ST7789_DC_Pin|ST7789_RST_Pin|ST7789_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : T_IRQ_Pin */
