@@ -57,8 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define ST7798_DC_Pin GPIO_PIN_1
-#define ST7798_DC_GPIO_Port GPIOA
+#define ST7789_DC_Pin GPIO_PIN_1
+#define ST7789_DC_GPIO_Port GPIOA
 #define ST7789_RST_Pin GPIO_PIN_3
 #define ST7789_RST_GPIO_Port GPIOA
 #define ST7789_CS_Pin GPIO_PIN_4

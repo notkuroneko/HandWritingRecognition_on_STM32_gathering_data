@@ -17,8 +17,8 @@ extern SPI_HandleTypeDef ST7789_SPI_PORT;
 /* Pin connection*/
 #define ST7789_RST_PORT ST7789_RST_GPIO_Port
 #define ST7789_RST_PIN  ST7789_RST_Pin
-#define ST7789_DC_PORT  ST7798_DC_GPIO_Port
-#define ST7789_DC_PIN   ST7798_DC_Pin
+#define ST7789_DC_PORT  ST7789_DC_GPIO_Port
+#define ST7789_DC_PIN   ST7789_DC_Pin
 
 #ifndef CFG_NO_CS
 #define ST7789_CS_PORT  ST7789_CS_GPIO_Port

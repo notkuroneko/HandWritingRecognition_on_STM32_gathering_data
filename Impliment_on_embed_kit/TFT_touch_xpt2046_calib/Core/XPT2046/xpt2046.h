@@ -133,17 +133,17 @@ typedef struct
 
 
 
-SPI_HandleTypeDef* spiPort;
-TouchScreen_CoordinatesRaw ts_CoordinatesRaw;
-TouchScreen_Coordinates ts_Coordinates;
-TouchScreen_OrientationTypeDef ts_Orientation;
-TouchScreen_Size ts_Size;
-TouchScreen_ControlByte ts_ControlByte;
-GPIO_TypeDef* ts_Cs_Port;
-GPIO_TypeDef* ts_Penirq_Port;
-uint16_t ts_Cs_Pin;
-uint16_t ts_Penirq_Pin;
-uint8_t command;
+extern SPI_HandleTypeDef* spiPort;
+extern TouchScreen_CoordinatesRaw ts_CoordinatesRaw;
+extern TouchScreen_Coordinates ts_Coordinates;
+extern TouchScreen_OrientationTypeDef ts_Orientation;
+extern TouchScreen_Size ts_Size;
+extern TouchScreen_ControlByte ts_ControlByte;
+extern GPIO_TypeDef* ts_Cs_Port;
+extern GPIO_TypeDef* ts_Penirq_Port;
+extern uint16_t ts_Cs_Pin;
+extern uint16_t ts_Penirq_Pin;
+extern uint8_t command;
 
 uint8_t xtp_compare_cords(uint16_t x, uint16_t y , uint16_t z, TouchScreen_Coordinates tsc);
 uint8_t xtp_compare_tsc(TouchScreen_Coordinates c, TouchScreen_Coordinates tsc);

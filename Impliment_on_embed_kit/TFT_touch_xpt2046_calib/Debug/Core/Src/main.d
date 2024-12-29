@@ -24,7 +24,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
+ D:/TAI_LIEU/20241/AI_and_App/HandWritingRecognition_on_STM32/Impliment_on_embed_kit/TFT_touch_xpt2046_calib/Core/ST7789/st7789.h \
+ D:/TAI_LIEU/20241/AI_and_App/HandWritingRecognition_on_STM32/Impliment_on_embed_kit/TFT_touch_xpt2046_calib/Core/ST7789/fonts.h \
+ D:/TAI_LIEU/20241/AI_and_App/HandWritingRecognition_on_STM32/Impliment_on_embed_kit/TFT_touch_xpt2046_calib/Core/XPT2046/xpt2046.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -52,3 +55,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
+D:/TAI_LIEU/20241/AI_and_App/HandWritingRecognition_on_STM32/Impliment_on_embed_kit/TFT_touch_xpt2046_calib/Core/ST7789/st7789.h:
+D:/TAI_LIEU/20241/AI_and_App/HandWritingRecognition_on_STM32/Impliment_on_embed_kit/TFT_touch_xpt2046_calib/Core/ST7789/fonts.h:
+D:/TAI_LIEU/20241/AI_and_App/HandWritingRecognition_on_STM32/Impliment_on_embed_kit/TFT_touch_xpt2046_calib/Core/XPT2046/xpt2046.h:

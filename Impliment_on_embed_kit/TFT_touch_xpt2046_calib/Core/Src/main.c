@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "st7789.h";
+#include "xpt2046.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -42,6 +43,7 @@
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2;
+DMA_HandleTypeDef hdma_spi1_tx;
 
 /* USER CODE BEGIN PV */
 
@@ -50,6 +52,7 @@ SPI_HandleTypeDef hspi2;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
@@ -90,6 +93,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_SPI1_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
@@ -100,6 +104,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	ST7789_ShortTest();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -229,6 +234,22 @@ static void MX_SPI2_Init(void)
 }
 
 /**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA2_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA2_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -245,13 +266,13 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, ST7798_DC_Pin|ST7789_RST_Pin|ST7789_CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, ST7789_DC_Pin|ST7789_RST_Pin|ST7789_CS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(T_CS_GPIO_Port, T_CS_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : ST7798_DC_Pin ST7789_RST_Pin ST7789_CS_Pin */
-  GPIO_InitStruct.Pin = ST7798_DC_Pin|ST7789_RST_Pin|ST7789_CS_Pin;
+  /*Configure GPIO pins : ST7789_DC_Pin ST7789_RST_Pin ST7789_CS_Pin */
+  GPIO_InitStruct.Pin = ST7789_DC_Pin|ST7789_RST_Pin|ST7789_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;

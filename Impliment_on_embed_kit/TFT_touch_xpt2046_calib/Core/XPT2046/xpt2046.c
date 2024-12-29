@@ -1,6 +1,21 @@
 #include "xpt2046.h"
 
 /**
+ * Defined the extern
+ */
+SPI_HandleTypeDef* spiPort;
+TouchScreen_CoordinatesRaw ts_CoordinatesRaw;
+TouchScreen_Coordinates ts_Coordinates;
+TouchScreen_OrientationTypeDef ts_Orientation;
+TouchScreen_Size ts_Size;
+TouchScreen_ControlByte ts_ControlByte;
+GPIO_TypeDef* ts_Cs_Port;
+GPIO_TypeDef* ts_Penirq_Port;
+uint16_t ts_Cs_Pin;
+uint16_t ts_Penirq_Pin;
+uint8_t command;
+
+/**
  * Init the moduel
  */
 void xpt2046_init()
